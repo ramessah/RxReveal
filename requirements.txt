@@ -1,0 +1,17 @@
+torch
+torch-geometric
+rdkit
+pandas
+numpy
+scikit-learn
+matplotlib
+plotly
+fastapi
+uvicorn
+easyocr
+opencv-python
+google-generativeai
+openai-whisper
+python-multipart
+pillow
+requests
