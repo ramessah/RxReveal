@@ -1,56 +1,158 @@
 # RxReveal
-Predict. Flag. Protect. An open-source Graph Neural Network framework for predicting harmful drug-drug interactions using molecular structures.
-# RxReveal
 
-**Predict. Flag. Protect.**
+> **Predict. Flag. Protect.**
 
-RxReveal is an open-source machine learning project that predicts harmful drug-drug interactions before they reach patients.
+RxReveal is an open-source AI system that predicts harmful drug-drug interactions before they reach patients.
 
-## Overview
+Instead of relying solely on documented interactions, RxReveal learns from molecular structures using Graph Neural Networks (GNNs) to estimate the likelihood of adverse interactions—even for drug pairs that have never been clinically studied.
 
-Most drug interaction checkers only identify interactions that have already been documented. RxReveal uses Graph Neural Networks (GNNs) to learn from molecular structures and predict interaction risks, including drug pairs that have never been clinically studied.
+---
 
-## Features
+## Why RxReveal?
 
-- Molecular graph construction using RDKit
-- Graph Neural Networks with PyTorch Geometric
-- Drug-drug interaction risk prediction
+Millions of possible drug combinations exist, but only a small fraction have been tested in clinical studies.
+
+Current interaction checkers are mostly rule-based and cannot reliably estimate risks for previously unseen drug pairs.
+
+RxReveal aims to bridge this gap by combining graph machine learning, explainable AI, and multimodal user input.
+
+---
+
+# Features
+
+### Graph Neural Network Prediction
+
+- Molecular graph construction from SMILES
+- Pairwise drug interaction prediction
 - Side-effect probability estimation
-- Baseline comparison using traditional machine learning models
-- Explainable AI through attention visualization
-- REST API built with FastAPI
+- Attention-based explainability
 
-## Technology Stack
+---
 
-- Python
+### Image Recognition
+
+Users can take a photo of:
+
+- medicine boxes
+- blister packs
+- prescription labels
+
+The system extracts the medicine name using OCR or Gemini Vision before running interaction prediction.
+
+---
+
+### Voice Input
+
+Instead of typing drug names, users can simply speak them.
+
+Speech is converted into text using Whisper Speech-to-Text before prediction.
+
+---
+
+### Text Input
+
+Users may also manually type drug names.
+
+---
+
+## Supported Input Methods
+
+- ⌨️ Keyboard
+- 📷 Camera
+- 🎤 Voice
+
+---
+
+# Technology Stack
+
+## AI
+
 - PyTorch
 - PyTorch Geometric
 - RDKit
-- FastAPI
-- Pandas
 - scikit-learn
-- Matplotlib
-- Plotly
 
-## Roadmap
+## Vision
 
-### Phase 1
-- Molecular graph construction
-- GNN encoder
-- Pairwise interaction prediction
+- Gemini Vision API
+- EasyOCR
+
+## Speech
+
+- Whisper
+
+## Backend
+
+- FastAPI
+
+## Data
+
+- DrugBank
+- SIDER
+
+---
+
+# System Pipeline
+
+```
+                User
+                  │
+      ┌───────────┼───────────┐
+      │           │           │
+ Keyboard     Camera      Voice
+      │           │           │
+      └───────────┼───────────┘
+                  │
+          Input Processing
+                  │
+      OCR / Gemini / Whisper
+                  │
+          Drug Name Validation
+                  │
+          DrugBank Lookup
+                  │
+         Molecular Structures
+                  │
+        Graph Neural Network
+                  │
+      Drug Interaction Prediction
+                  │
+      Risk Score + Side Effects
+                  │
+      Explainable AI Results
+```
+
+---
+
+# Project Goals
+
+- Predict unseen drug-drug interactions
+- Improve medication safety
+- Make AI healthcare tools accessible
+- Support open-source research
+
+---
+
+# Development Roadmap
+
+## Phase 1
+
+- Drug lookup
+- Molecular graph generation
+- GNN implementation
 - Baseline model
-- Model evaluation
+- Evaluation
 
-### Phase 2
+## Phase 2
+
 - Explainability
-- Biological feature integration
-- Interactive web interface
-- Multi-drug interaction research
+- Image recognition
+- Voice recognition
+- FastAPI backend
+- Web interface
 
-## Status
+---
 
-🚧 Early Development
-
-## License
+# License
 
 MIT License
