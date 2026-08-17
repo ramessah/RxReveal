@@ -1,0 +1,52 @@
+:root {
+  --bg: #eaf6f7;
+  --card-bg: #ffffff;
+  --ink: #0f2733;
+  --ink-soft: #5b7480;
+  --teal: #0e7c92;
+  --teal-dark: #0b6478;
+  --teal-tint: #c9edf0;
+  --teal-tint-2: #e3f6f7;
+  --border: #dcebee;
+  --red: #e5484d;
+  --red-tint: #fde3e3;
+  --green: #1c9a6c;
+  --green-tint: #e1f5ec;
+  --amber: #d9822b;
+  --amber-tint: #fdf0dc;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --shadow: 0 10px 30px rgba(15, 39, 51, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* The hidden attribute must always win — several components toggle visibility
+   with hidden while also setting display via class rules. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 480px;
+}
+
+h1, h2, h3 {
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}

@@ -1,0 +1,78 @@
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.08s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-large {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.02rem;
+}
+.btn-primary {
+  background: var(--teal);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--teal-dark);
+}
+.btn-primary svg {
+  width: 18px;
+  height: 18px;
+}
+.btn-outline {
+  background: #fff;
+  color: var(--teal-dark);
+  border: 1.5px solid var(--teal-tint);
+}
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink);
+}
+.btn-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.topbar-title {
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2.5px solid var(--teal-dark);
+  outline-offset: 2px;
+}

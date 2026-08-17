@@ -1,0 +1,54 @@
+.landing-card {
+  text-align: center;
+  padding: 44px 32px;
+}
+
+.badge-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--teal-tint);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--teal-dark);
+}
+.badge-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.subtitle {
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+  line-height: 1.4;
+}
+
+.hint {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin: 28px 0 14px;
+}
+
+.method-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.method-chip {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+.method-chip svg {
+  width: 20px;
+  height: 20px;
+  color: var(--teal);
+}

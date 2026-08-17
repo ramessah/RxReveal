@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RxReveal — Add a medicine</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/screens/input.css" />
+</head>
+<body>
+
+<div class="app">
+  <div class="card">
+    <div class="topbar">
+      <button class="btn-icon" id="input-back" aria-label="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <span class="topbar-title" id="input-topbar-title">Medicine 1 of 2</span>
+      <span style="width:40px"></span>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-seg" id="seg-1"></div>
+      <div class="progress-seg" id="seg-2"></div>
+    </div>
+    <div class="progress-labels">
+      <div class="progress-label" id="label-1"><span class="step-dot">1</span><span>Medicine 1</span></div>
+      <div class="progress-label" id="label-2"><span class="step-dot">2</span><span>Medicine 2</span></div>
+    </div>
+
+    <h2 id="input-heading">Add the first medicine</h2>
+    <p class="subtitle-sm">Pick any way that suits you.</p>
+
+    <div class="method-tabs">
+      <button class="method-tab active" data-mode="type">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>
+        <span>Type</span>
+      </button>
+      <button class="method-tab" data-mode="photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>Photo</span>
+      </button>
+      <button class="method-tab" data-mode="speak">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
+        <span>Speak</span>
+      </button>
+    </div>
+
+    <!-- TYPE PANEL -->
+    <div class="mode-panel active" id="panel-type">
+      <label class="field-label" for="type-input">Name of the medicine</label>
+      <input type="text" id="type-input" class="text-field" placeholder="Start typing…" autocomplete="off" />
+      <p class="hint-sm">We will suggest names as you type. You only need the first few letters.</p>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+
+    <!-- PHOTO PANEL -->
+    <div class="mode-panel" id="panel-photo">
+      <div class="camera-wrap" id="camera-wrap">
+        <video id="camera-video" autoplay playsinline muted></video>
+        <img id="captured-thumb" hidden alt="Captured medicine label" />
+        <canvas id="capture-canvas" hidden></canvas>
+        <div class="processing-overlay" id="photo-processing" hidden>
+          <div class="spinner"></div>
+          <span>Reading the label…</span>
+        </div>
+      </div>
+      <p class="hint-sm" id="camera-status" aria-live="polite" hidden></p>
+
+      <div class="capture-row" id="capture-row">
+        <button class="shutter-btn" id="shutter-btn" aria-label="Capture photo"><span></span></button>
+      </div>
+      <div class="retake-row" id="retake-row" hidden>
+        <button class="btn btn-outline" id="retake-btn">Retake</button>
+        <button class="btn btn-primary" id="use-photo-btn">Use this photo</button>
+      </div>
+      <a class="fallback-link" id="photo-fallback">Type it instead</a>
+    </div>
+
+    <!-- SPEAK PANEL -->
+    <div class="mode-panel" id="panel-speak">
+      <div class="mic-wrap">
+        <button class="mic-btn" id="mic-btn" aria-label="Start recording">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
+        </button>
+        <span class="mic-label" id="mic-label">Tap and say the medicine name</span>
+
+        <div class="rec-state" id="rec-state" hidden>
+          <div class="rec-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          <span class="rec-timer" id="rec-timer">0:00</span>
+          <button class="btn btn-primary" id="stop-rec-btn">Stop recording</button>
+        </div>
+
+        <div class="processing-overlay" id="speech-processing" hidden>
+          <div class="spinner"></div>
+          <span>Listening to your recording…</span>
+        </div>
+      </div>
+
+      <p class="hint-sm" id="mic-status" aria-live="polite" hidden></p>
+
+      <div class="audio-preview" id="audio-preview-wrap" hidden>
+        <audio controls id="audio-preview"></audio>
+      </div>
+
+      <div class="action-row" id="rec-actions" hidden>
+        <button class="btn btn-outline" id="record-again-btn">Record again</button>
+        <button class="btn btn-primary" id="use-recording-btn">Use this recording</button>
+      </div>
+
+      <a class="fallback-link" id="speak-fallback">Type it instead</a>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/screens/input.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+.progress-track {
+  display: flex;
+  gap: 6px;
+  height: 5px;
+  margin-bottom: 6px;
+}
+.progress-seg {
+  flex: 1;
+  background: var(--border);
+  border-radius: 3px;
+}
+.progress-seg.done,
+.progress-seg.current {
+  background: var(--teal);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.progress-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.progress-label.done {
+  color: var(--green);
+}
+.progress-label.current {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+.step-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--border);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+.progress-label.current .step-dot {
+  background: var(--teal);
+}
+.progress-label.done .step-dot {
+  background: var(--green);
+}
+
+.subtitle-sm {
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  font-size: 0.92rem;
+}
+
+.method-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+.method-tab {
+  flex: 1;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.method-tab svg {
+  width: 20px;
+  height: 20px;
+}
+.method-tab.active {
+  background: var(--teal-tint);
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.mode-panel {
+  display: none;
+}
+.mode-panel.active {
+  display: block;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.text-field {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+}
+.text-field:focus {
+  border-color: var(--teal);
+}
+
+.hint-sm {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  margin: 8px 0 16px;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+.suggestion-item {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.suggestion-item:hover {
+  border-color: var(--teal);
+}
+.suggestion-name {
+  font-weight: 600;
+}
+.suggestion-sub {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.suggestion-status {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 10px 0;
+}
+.suggestion-status.error {
+  color: var(--red);
+}
+
+/* ---- photo panel ---- */
+.camera-wrap {
+  position: relative;
+  height: 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #0f2733;
+}
+#camera-video,
+#captured-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.processing-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 39, 51, 0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.capture-row {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0;
+}
+.shutter-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 4px solid var(--teal-tint);
+  cursor: pointer;
+}
+.shutter-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.shutter-btn span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.retake-row,
+.action-row {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0;
+}
+.retake-row .btn,
+.action-row .btn {
+  flex: 1;
+}
+
+.fallback-link {
+  display: block;
+  text-align: center;
+  color: var(--teal-dark);
+  font-size: 0.88rem;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* ---- speak panel ---- */
+.mic-wrap {
+  position: relative;
+  height: 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: linear-gradient(165deg, #123642 0%, #0f2733 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.mic-btn {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 5px solid var(--teal-tint);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.mic-btn:hover {
+  background: var(--teal-dark);
+}
+.mic-btn:active {
+  transform: scale(0.94);
+}
+.mic-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.mic-btn svg {
+  width: 38px;
+  height: 38px;
+}
+
+.mic-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+}
+
+.rec-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.rec-wave {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+}
+.rec-wave span {
+  width: 5px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--red);
+  animation: rec-bounce 0.9s ease-in-out infinite;
+}
+.rec-wave span:nth-child(2) { animation-delay: 0.12s; }
+.rec-wave span:nth-child(3) { animation-delay: 0.24s; }
+.rec-wave span:nth-child(4) { animation-delay: 0.36s; }
+.rec-wave span:nth-child(5) { animation-delay: 0.48s; }
+@keyframes rec-bounce {
+  0%, 100% { height: 10px; }
+  50% { height: 28px; }
+}
+
+.rec-timer {
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.rec-state .btn {
+  min-width: 170px;
+}
+
+.audio-preview {
+  margin-top: 16px;
+}
+.audio-preview audio {
+  width: 100%;
+  height: 44px;
+  accent-color: var(--teal);
+}
